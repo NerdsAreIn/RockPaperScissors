@@ -78,11 +78,11 @@ function game() {
     }
     else if (computerScore > playerScore) {
         alert(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        alert(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
     }
     else {
         alert(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        alert(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     }
 game();
