@@ -85,3 +85,4 @@ function game() {
         alert(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     }
+game();
