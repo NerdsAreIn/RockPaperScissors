@@ -2,9 +2,9 @@ function computerPlay() {
     let options = ["Rock", "Paper", "Scissors"];
     let computerSelection = options[Math.floor(Math.random() * options.length)];
     return computerSelection;
-   }
+}
       
-   function singleRound(playerSelection, computerSelection) {
+function singleRound(playerSelection, computerSelection) {
     playerSelection = prompt("Enter 'Rock', 'Paper' or 'Scissors'.");
     let regEx = /rock|paper|scissors/i;
     let validSelection = playerSelection.match(regEx);
@@ -12,10 +12,10 @@ function computerPlay() {
     alert(`The computer chose ${computerSelection}.`);
     if (playerSelection != validSelection) {
         validSelection = prompt("Your selection was invalid. Please enter 'Rock', 'Paper' or 'Scissors'.");
-validSelection = validSelection.match(regEx);
-                   }
+        validSelection = validSelection.match(regEx);
+    }
 
-    if (/rock/i.test(validSelection) && computerSelection == "Scissors"){
+    if (/rock/i.test(validSelection) && computerSelection == "Scissors") {
         let resultA = "You win! Rock blunts scissors!";
         alert(resultA);
         return resultA;
@@ -24,8 +24,8 @@ validSelection = validSelection.match(regEx);
         let resultB = "You win! Paper encloses rock!";
         alert(resultB);
         return resultB;
-        } 
-        else if (/scissors/i.test(validSelection) && computerSelection == "Paper") {
+    } 
+    else if (/scissors/i.test(validSelection) && computerSelection == "Paper") {
         let resultC = "You win! Scissors cut paper!";
         alert(resultC);
         return resultC;
@@ -49,29 +49,29 @@ validSelection = validSelection.match(regEx);
         let resultG = "It's a draw.";
         alert(resultG);
         return resultG;
-       }
+    }
 }
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
     for (i = 1; i <= 5; i++) {
-    let result = singleRound();
-     if (/win/i.test(result)) {
-         playerScore += 1;
-         alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-         console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-     }
-     else if (/lose/i.test(result)) {
-         computerScore += 1;
-         alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-         console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-     }
-     else {
-         alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-         console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        let result = singleRound();
+    if (/win/i.test(result)) {
+        playerScore += 1;
+        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        }
+    else if (/lose/i.test(result)) {
+        computerScore += 1;
+        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        }
+    else {
+        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     }
-    
     if (playerScore > computerScore) {
         alert(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
@@ -83,6 +83,7 @@ function game() {
     else {
         alert(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        }
     }
+}
+    
 game();
