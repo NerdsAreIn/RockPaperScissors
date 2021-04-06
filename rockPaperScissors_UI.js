@@ -5,8 +5,8 @@ function computerPlay() {
     return computerSelection;
 }
       
-function singleRound(playerSelection, computerSelection) {
-    playerSelection = prompt("Enter 'Rock', 'Paper' or 'Scissors'.");
+function singleRound(e, computerSelection) {
+    playerSelection = e.target;
     // code below makes the any of the three choices in any case a valid selection; anything else is invalid
     const regEx = /rock|paper|scissors/i;
     let validSelection = playerSelection.match(regEx);
