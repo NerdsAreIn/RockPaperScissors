@@ -4,20 +4,29 @@ function computerPlay() {
     const computerSelection = options[Math.floor(Math.random() * options.length)];
     return computerSelection;
 }
-      
+let buttonID;
+
+const buttons = Array.from(getElementsByTagName("button"));
+buttons.forEach(button => {
+    buttonID = button.getAttribute("id");
+    button.addEventListener("click", singleRound);
+    //return buttonID;
+});
+        
+
 function singleRound(e, computerSelection) {
     playerSelection = e.target;
     // code below makes the any of the three choices in any case a valid selection; anything else is invalid
-    const regEx = /rock|paper|scissors/i;
-    let validSelection = playerSelection.match(regEx);
+    //const regEx = /rock|paper|scissors/i;
+    //let validSelection = playerSelection.match(regEx);
     computerSelection = computerPlay();
     alert(`The computer chose ${computerSelection}.`);
-    if (playerSelection != validSelection) {
+    /*if (playerSelection != validSelection) {
         validSelection = prompt("Your selection was invalid. Please enter 'Rock', 'Paper' or 'Scissors'.");
         validSelection = validSelection.match(regEx);
-    }
+    }*/
 
-    if (/rock/i.test(validSelection) && computerSelection == "Scissors") {
+    if (buttonID === "rock" && computerSelection == "Scissors") {
         let resultA = "You win! Rock blunts scissors!";
         alert(resultA);
         return resultA;
