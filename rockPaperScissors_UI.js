@@ -4,69 +4,69 @@ function computerPlay() {
     const computerSelection = options[Math.floor(Math.random() * options.length)];
     return computerSelection;
 }
-let buttonID;
 
-const buttons = Array.from(getElementsByTagName("button"));
-buttons.forEach(button => {
-    buttonID = button.getAttribute("id");
-    button.addEventListener("click", singleRound);
-    //return buttonID;
-});
-        
+const buttons = Array.from(document.getElementsByTagName("button"));
+buttons.forEach((button) => {
+      button.addEventListener("click", singleRound,);
+      });
 
-function singleRound(e, computerSelection) {
-    playerSelection = e.target;
+let result;
+
+function singleRound(event, computerSelection) {
+    let playerSelection = event.target;
+    console.log(playerSelection);
     // code below makes the any of the three choices in any case a valid selection; anything else is invalid
     //const regEx = /rock|paper|scissors/i;
     //let validSelection = playerSelection.match(regEx);
     computerSelection = computerPlay();
+    //console.log(computerSelection);
     alert(`The computer chose ${computerSelection}.`);
     /*if (playerSelection != validSelection) {
         validSelection = prompt("Your selection was invalid. Please enter 'Rock', 'Paper' or 'Scissors'.");
         validSelection = validSelection.match(regEx);
     }*/
 
-    if (buttonID === "rock" && computerSelection == "Scissors") {
-        let resultA = "You win! Rock blunts scissors!";
-        alert(resultA);
-        return resultA;
+    if (playerSelection.getAttribute("id") == "rock" && computerSelection == "Scissors") {
+        result = "You win! Rock blunts scissors!";
+        alert(result);
+        return result;
     }
-    else if (/paper/i.test(validSelection) && computerSelection == "Rock") {
-        let resultB = "You win! Paper encloses rock!";
-        alert(resultB);
-        return resultB;
+    else if (playerSelection.getAttribute("id") == "paper" && computerSelection == "Rock") {
+        result = "You win! Paper encloses rock!";
+        alert(result);
+        return result;
     } 
-    else if (/scissors/i.test(validSelection) && computerSelection == "Paper") {
-        let resultC = "You win! Scissors cut paper!";
-        alert(resultC);
-        return resultC;
+    else if (playerSelection.getAttribute("id") == "scissors" && computerSelection == "Paper") {
+        result = "You win! Scissors cut paper!";
+        alert(result);
+        return result;
     }
-    else if (/rock/i.test(validSelection) && computerSelection == "Paper") {
-        let resultD = "You lose. Paper encloses rock."
-        alert(resultD);
-        return (resultD);
+    else if (playerSelection.getAttribute("id") == "rock" && computerSelection == "Paper") {
+        result = "You lose. Paper encloses rock."
+        alert(result);
+        return (result);
     }
-    else if (/paper/i.test(validSelection) && computerSelection == "Scissors") {
-        let resultE = "You lose. Scissors cut paper.";
-        alert(resultE);
-        return resultE;
+    else if (playerSelection.getAttribute("id") == "paper" && computerSelection == "Scissors") {
+        result = "You lose. Scissors cut paper.";
+        alert(result);
+        return result;
     }
-    else if (/scissors/i.test(validSelection) && computerSelection == "Rock") {
-        let resultF = "You lose. Rock blunts scissors."
-        alert(resultF);
-        return resultF;
-    }
-    else {
-        let resultG = "It's a draw.";
-        alert(resultG);
-        return resultG;
+    else if (playerSelection.getAttribute("id") == "scissors" && computerSelection == "Rock") {
+        result = "You lose. Rock blunts scissors."
+        alert(result);
+        return result;
+    } 
+    else {      
+        result = "It's a draw.";
+        alert(result);
+        return result;
     }
 }
 
-function game() {
     let playerScore = 0;
     let computerScore = 0;
-    let result = singleRound();
+    //let result = singleRound();
+    function tallyScore() {
     if (/win/i.test(result)) {
         playerScore += 1;
         alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
@@ -82,18 +82,19 @@ function game() {
         console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     }
-    if (playerScore > computerScore) {
+
+    if (playerScore == 5) {
+        if (playerScore > computerScore) {
         alert(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-    }
-    else if (computerScore > playerScore) {
+        }
+        else if (computerScore > playerScore) {
         alert(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-    }
-    else {
+        }
+        else {
         alert(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        }
     }
-
-    
-game();
+//game();
