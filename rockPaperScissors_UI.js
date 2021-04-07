@@ -57,8 +57,7 @@ function singleRound(e, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    for (i = 1; i <= 5; i++) {
-        let result = singleRound();
+    let result = singleRound();
     if (/win/i.test(result)) {
         playerScore += 1;
         alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
@@ -86,6 +85,6 @@ function game() {
         alert(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
     }
-}
+
     
 game();
