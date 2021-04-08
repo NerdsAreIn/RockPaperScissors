@@ -8,17 +8,15 @@ function computerPlay() {
 const buttons = Array.from(document.getElementsByTagName("button"));
 buttons.forEach((button) => {
       button.addEventListener("click", function(event) {
- event.preventDefault();
- singleRound(event);
+ event.preventDefault(); // required to prevent automatic page refresh and loss of data after every click
+    singleRound(event);    
       });
 });
+
 const resultsBox = document.querySelector("div");
 resultsBox.textContent = "";
-const br = document.createElement("br");
 let playerScore = 0;
 let computerScore = 0;
-
-//resultsBox.addEventListener("", tallyScore);
 
 function tallyScore() {
     if (/win/i.test(result)) {
@@ -28,11 +26,11 @@ function tallyScore() {
         }
     else if (/lose/i.test(result)) {
         computerScore += 1;
-        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsBox.textContent += (`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     else {
-        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsBox.textContent += (`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     }
@@ -40,65 +38,57 @@ function tallyScore() {
 function singleRound(event, computerSelection) {
     let playerSelection = event.target;
     console.log(playerSelection);
-    // code below makes the any of the three choices in any case a valid selection; anything else is invalid
-    //const regEx = /rock|paper|scissors/i;
-    //let validSelection = playerSelection.match(regEx);
     computerSelection = computerPlay();
-    //console.log(computerSelection);
-    alert(`The computer chose ${computerSelection}.`);
-    /*if (playerSelection != validSelection) {
-        validSelection = prompt("Your selection was invalid. Please enter 'Rock', 'Paper' or 'Scissors'.");
-        validSelection = validSelection.match(regEx);
-    }*/
+    if (playerScore < 5) {
+        alert(`The computer chose ${computerSelection}.`);
+    }
     if (playerSelection.getAttribute("id") == "rock" && computerSelection == "Scissors") {
         result = "You win! Rock blunts scissors!" + "\n";
         resultsBox.textContent = result;
     }
     else if (playerSelection.getAttribute("id") == "paper" && computerSelection == "Rock") {
         result = "You win! Paper encloses rock!";
-        alert(result);
-        return result;
+        resultsBox.textContent = result;        
     } 
     else if (playerSelection.getAttribute("id") == "scissors" && computerSelection == "Paper") {
         result = "You win! Scissors cut paper!";
-        alert(result);
-        return result;
+        resultsBox.textContent = result;
     }
     else if (playerSelection.getAttribute("id") == "rock" && computerSelection == "Paper") {
         result = "You lose. Paper encloses rock."
-        alert(result);
-        return (result);
+        resultsBox.textContent = result;
     }
     else if (playerSelection.getAttribute("id") == "paper" && computerSelection == "Scissors") {
         result = "You lose. Scissors cut paper.";
-        alert(result);
-        return result;
+        resultsBox.textContent = result;
     }
     else if (playerSelection.getAttribute("id") == "scissors" && computerSelection == "Rock") {
         result = "You lose. Rock blunts scissors."
-        alert(result);
-        return result;
+        resultsBox.textContent = result;
     } 
     else {      
         result = "It's a draw.";
-        alert(result);
-        return result;
+        resultsBox.textContent = result;
     }
-if (result) tallyScore();
+    if (playerScore == 5) {
+    displayFinalScore();
+    resultsBox.textContent = "";
+    resultsBox.textContent = "That's the end  of the game. Refresh the page to start a new game.";
+    }
+    else tallyScore();
 }
      
-        if (playerScore == 5) {
+    function displayFinalScore() {
         if (playerScore > computerScore) {
-        alert(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsBox.textContent += (`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else if (computerScore > playerScore) {
-        alert(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsBox.textContent += (`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else {
-        alert(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsBox.textContent += (`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     }
-//game();

@@ -1,0 +1,49 @@
+@font-face {
+/* font name needs to be in quotes */
+font-family: "reglisse-white";
+src: url("fonts/ReglisseBack-eZewm.otf") format("opentype");
+}
+@font-face {
+font-family: "reglisse-black";
+src: url("fonts/ReglisseFill-WyWzn.otf") format("opentype");
+}
+@font-face {
+font-family: "alloy";
+src: url("fonts/AlloyInk-lgdWw.otf") format("opentype");
+}
+@font-face {
+font-family: "shades";
+src: url("fonts/ShadesOfBlack-jjvG.ttf") format("truetype");
+}
+@font-face {
+font-family: "candy";
+src: url("fonts/Candycolouredclown-x2vq.otf") format("opentype");
+}
+@font-face {
+font-family: "snacker";
+src: url("fonts/SnackerComicPersonalUseOnly-g3Z5.ttf") format("truetype");
+}
+body {
+position: relative;
+box-sizing: border-box;
+background: linear-gradient(to left,darkgray, white), no-repeat;
+}
+h1 {
+font-family: "alloy", monospace;
+text-align: center;
+}
+#results {
+font-family: "reglisse-black";
+position: absolute;
+left: 30%;
+border: 10px groove black; 
+width: 40%; 
+height: 60px; 
+margin: 50px;
+font-size: 20px;
+padding: 20px 10px;
+}
+button {
+position: relative;
+left: 200px;
+}
