@@ -7,10 +7,35 @@ function computerPlay() {
 
 const buttons = Array.from(document.getElementsByTagName("button"));
 buttons.forEach((button) => {
-      button.addEventListener("click", singleRound,);
+      button.addEventListener("click", function(event) {
+ event.preventDefault();
+ singleRound(event);
       });
+});
+const resultsBox = document.querySelector("div");
+resultsBox.textContent = "";
+const br = document.createElement("br");
+let playerScore = 0;
+let computerScore = 0;
 
-let result;
+//resultsBox.addEventListener("", tallyScore);
+
+function tallyScore() {
+    if (/win/i.test(result)) {
+        playerScore += 1;
+        resultsBox.textContent += (`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        }
+    else if (/lose/i.test(result)) {
+        computerScore += 1;
+        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        }
+    else {
+        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        }
+    }
 
 function singleRound(event, computerSelection) {
     let playerSelection = event.target;
@@ -25,11 +50,9 @@ function singleRound(event, computerSelection) {
         validSelection = prompt("Your selection was invalid. Please enter 'Rock', 'Paper' or 'Scissors'.");
         validSelection = validSelection.match(regEx);
     }*/
-
     if (playerSelection.getAttribute("id") == "rock" && computerSelection == "Scissors") {
-        result = "You win! Rock blunts scissors!";
-        alert(result);
-        return result;
+        result = "You win! Rock blunts scissors!" + "\n";
+        resultsBox.textContent = result;
     }
     else if (playerSelection.getAttribute("id") == "paper" && computerSelection == "Rock") {
         result = "You win! Paper encloses rock!";
@@ -61,29 +84,10 @@ function singleRound(event, computerSelection) {
         alert(result);
         return result;
     }
+if (result) tallyScore();
 }
-
-    let playerScore = 0;
-    let computerScore = 0;
-    //let result = singleRound();
-    function tallyScore() {
-    if (/win/i.test(result)) {
-        playerScore += 1;
-        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        }
-    else if (/lose/i.test(result)) {
-        computerScore += 1;
-        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        }
-    else {
-        alert(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        }
-    }
-
-    if (playerScore == 5) {
+     
+        if (playerScore == 5) {
         if (playerScore > computerScore) {
         alert(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
