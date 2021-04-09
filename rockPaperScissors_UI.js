@@ -5,7 +5,7 @@ function computerPlay() {
     return computerSelection;
 }
 
-const resultsBox = document.querySelector("div");
+//const resultsBox = document.querySelector("div");
 //resultsBox.textContent = "";
 const resultsPara1 = document.getElementById("p1");
 const resultsPara2 = document.querySelector("#p2");
@@ -74,25 +74,30 @@ function singleRound(event, computerSelection) {
         resultsPara1.textContent = result;
     }
     if (playerScore == 5) {
-    displayFinalScore();
     resultsPara1.textContent = "";
-    resultsPara2.textContent = "";
-    resultsBox.textContent = "That's the end  of the game. Refresh the page to start a new game.";
+    displayFinalScore();    
+    resultsPara2.textContent = "That's the end  of the game. Refresh the page to start a new game.";
     }
     else tallyScore();
 }
      
     function displayFinalScore() {
         if (playerScore > computerScore) {
-        resultsPara2.textContent = (`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`You won! Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsPara1.textContent = (`You won!
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`You won! 
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else if (computerScore > playerScore) {
-        resultsPara2.textContent = (`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`You lost. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsPara1.textContent = (`You lost.
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`You lost. 
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else {
-        resultsPara2.textContent = (`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`It's a draw. Final score: \n Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        resultsPara1.textContent = (`It's a draw. 
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        console.log(`It's a draw. 
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
     }
