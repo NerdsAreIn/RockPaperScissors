@@ -26,7 +26,10 @@ src: url("fonts/SnackerComicPersonalUseOnly-g3Z5.ttf") format("truetype");
 body {
 position: relative;
 box-sizing: border-box;
-background: linear-gradient(to left,darkgray, white), no-repeat;
+background: linear-gradient(to right,darkgray 0%, white,
+rgba(128, 128, 128, 0.562) 95%);
+margin: 0;
+padding: 0;
 }
 h1 {
 font-family: "alloy", monospace;
@@ -35,15 +38,38 @@ text-align: center;
 #results {
 font-family: "reglisse-black";
 position: absolute;
-left: 30%;
+left: 30vw;
 border: 10px groove black; 
-width: 40%; 
-height: 60px; 
-margin: 50px;
+width: 40vw; 
+height: auto; 
+margin: 30px auto;
 font-size: 20px;
 padding: 20px 10px;
+border-radius: 3px;
 }
 button {
 position: relative;
-left: 200px;
+left: 150px;
+border-radius: 4px;
+margin: 10px;
+transition: all 0.3s;
+border: 1px solid darkgray;
+padding: 5px;
+}
+button:hover {
+transform: scale(1.1);
+}
+img {
+width: 220px;
+height: 140px;
+}
+p {
+/*border: 2px solid pink;*/
+padding: 5px;
+margin: 10px 0px;
+}
+#intro {
+width: 50vw;
+margin: 10px auto;
+font-family: "candy";
 }
