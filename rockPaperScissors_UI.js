@@ -5,17 +5,13 @@ function computerPlay() {
     return computerSelection;
 }
 
-//const resultsBox = document.querySelector("div");
-//resultsBox.textContent = "";
 const resultsPara1 = document.getElementById("p1");
 const resultsPara2 = document.querySelector("#p2");
-//resultsPara1.textContent = "";
-//resultsPara2.textContent = "";
 const buttons = Array.from(document.getElementsByTagName("button"));
 buttons.forEach((button) => {
-      button.addEventListener("click", function(event) {
- event.preventDefault(); // required to prevent automatic page refresh and loss of data after every click
-    singleRound(event);    
+	button.addEventListener("click", function(event) {
+		event.preventDefault(); // required to prevent automatic page refresh and loss of data after every click
+		singleRound(event);    
       });
 });
 let playerScore = 0;
@@ -36,14 +32,14 @@ function tallyScore() {
         resultsPara2.textContent = (`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
-    }
+}
 
 function singleRound(event, computerSelection) {
     let playerSelection = event.target;
-    console.log(playerSelection);
     computerSelection = computerPlay();
     if (playerScore < 5) {
-        alert(`The computer chose ${computerSelection}.`);
+    // TODO: create own alert box for this: 
+    alert(`The computer chose ${computerSelection}.`);
     }
     if (playerSelection.getAttribute("id") == "rock" && computerSelection == "Scissors") {
         result = "You win! Rock blunts scissors!" + "\n";
@@ -81,23 +77,23 @@ function singleRound(event, computerSelection) {
     else tallyScore();
 }
      
-    function displayFinalScore() {
-        if (playerScore > computerScore) {
-        resultsPara1.textContent = (`You won!
-Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`You won! 
-Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+function displayFinalScore() {
+	if (playerScore > computerScore) {
+        	resultsPara1.textContent = (`You won!
+			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        	console.log(`You won! 
+			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else if (computerScore > playerScore) {
-        resultsPara1.textContent = (`You lost.
-Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        console.log(`You lost. 
-Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        	resultsPara1.textContent = (`You lost.
+			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        	console.log(`You lost. 
+			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else {
         resultsPara1.textContent = (`It's a draw. 
-Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+		Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`It's a draw. 
-Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+		Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
-    }
+}
