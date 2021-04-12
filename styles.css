@@ -23,9 +23,11 @@ src: url("fonts/Candycolouredclown-x2vq.otf") format("opentype");
 font-family: "snacker";
 src: url("fonts/SnackerComicPersonalUseOnly-g3Z5.ttf") format("truetype");
 }
+* {
+box-sizing: border-box;
+}
 body {
 position: relative;
-box-sizing: border-box;
 background: linear-gradient(to right,darkgray 0%, white,
 rgba(128, 128, 128, 0.562) 95%);
 margin: 0;
@@ -36,6 +38,9 @@ font-family: "snacker", monospace;
 text-align: center;
 font-size: 40px;
 margin: 10px 0 15px;
+}
+button {
+cursor: pointer;
 }
 #results {
 font-family: "reglisse-black";
@@ -49,18 +54,18 @@ font-size: 16px;
 padding: 10px;
 border-radius: 3px;
 }
-button {
+.choice-button {
 border-radius: 4px;
 margin: 10px;
 transition: all 0.3s;
 border: 1px solid darkgray;
 padding: 5px;
 }
-button:hover, button:focus {
+.choice-button:hover, .choice-button:focus, #close-button:hover {
 transform: scale(1.1);
 }
 img:focus {
-outline: none;
+outline: 2px solid black;
 }
 img {
 width: 220px;
@@ -80,4 +85,35 @@ font-size: 14px;
 width: max-content;
 height: auto;
 margin: auto;
+}
+#alert-box {
+width: 220px;
+height: 130px;
+background-color: hsl(0, 0%, 95%);
+position: absolute;
+bottom: 25px;
+left: 400px;
+border: 2px solid black;
+border-radius: 4px;
+padding: 20px 10px;
+font-family: "candy";
+text-align: center;
+font-size: 16px;
+}
+#close-button {
+width: 50px;
+height: auto;
+background-color: #999999;
+font-family: "reglisse-black";
+Z-index: 1;
+position: absolute;
+bottom: 15px;
+right: 15px;
+box-shadow: 3px 3px 6px white;
+}
+.invisible {
+display: none;
+}
+.visible {
+display: block;
 }

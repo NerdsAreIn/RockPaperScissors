@@ -4,18 +4,46 @@ function computerPlay() {
     const computerSelection = options[Math.floor(Math.random() * options.length)];
     return computerSelection;
 }
+function functionName(event) {
+        event.preventDefault();
+		playSingleRound(event);          
+}
 
 const resultsPara1 = document.getElementById("p1");
 const resultsPara2 = document.querySelector("#p2");
-const buttons = Array.from(document.getElementsByTagName("button"));
-buttons.forEach((button) => {
-	button.addEventListener("click", function(event) {
-		event.preventDefault(); // required to prevent automatic page refresh and loss of data after every click
-		singleRound(event);    
-      });
-});
+const buttons = Array.from(document.getElementsByClassName("choice-button"));
+const alertBox = document.getElementById("alert-box");
+const closeButton = document.getElementById("close-button");
 let playerScore = 0;
 let computerScore = 0;
+let computerSelection;
+let playerSelection;
+let result;
+let compSelection = document.getElementById("compSelection");
+closeButton.onclick = () => {
+    makeInvisible();
+}
+buttons.forEach((button) => {
+	button.addEventListener("click", functionName);
+});
+
+function makeVisible() {
+    alertBox.setAttribute("class","visible");
+    closeButton.setAttribute("class", "visible");
+}
+
+function makeInvisible() {
+    closeButton.setAttribute("class", "invisible");
+    alertBox.setAttribute("class", "invisible");
+}
+
+function createAlert() {
+    computerSelection = computerPlay();
+    compSelection.textContent = `The computer chose ${computerSelection}.`;
+    alertBox.value = compSelection + closeButton;
+    setTimeout(makeVisible, 500);
+    return computerSelection;
+}
 
 function tallyScore() {
     if (/win/i.test(result)) {
@@ -34,13 +62,7 @@ function tallyScore() {
         }
 }
 
-function singleRound(event, computerSelection) {
-    let playerSelection = event.target;
-    computerSelection = computerPlay();
-    if (playerScore < 5) {
-    // TODO: create own alert box for this: 
-    alert(`The computer chose ${computerSelection}.`);
-    }
+function displayRoundScore() {
     if (playerSelection.getAttribute("id") == "rock" && computerSelection == "Scissors") {
         result = "You win! Rock blunts scissors!" + "\n";
         resultsPara1.textContent = result;
@@ -69,30 +91,35 @@ function singleRound(event, computerSelection) {
         result = "It's a draw.";
         resultsPara1.textContent = result;
     }
+}
+
+function playSingleRound(event) {
     if (playerScore == 5) {
-    resultsPara1.textContent = "";
-    displayFinalScore();    
+    displayFinalScore(); 
     resultsPara2.textContent = "That's the end  of the game. Refresh the page to start a new game.";
+        }
+    else if (playerScore < 5) {
+    playerSelection = event.target;
+    createAlert();
+    setTimeout(displayRoundScore, 2000);
+    setTimeout(tallyScore, 3000);
     }
-    else tallyScore();
 }
      
 function displayFinalScore() {
 	if (playerScore > computerScore) {
-        	resultsPara1.textContent = (`You won!
-			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        	console.log(`You won! 
-			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        	resultsPara1.textContent = (`You won! 
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        	console.log(`You won!Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else if (computerScore > playerScore) {
-        	resultsPara1.textContent = (`You lost.
-			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
-        	console.log(`You lost. 
-			Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        	resultsPara1.textContent = (`You lost. 
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+        	console.log(`You lost. Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
         else {
         resultsPara1.textContent = (`It's a draw. 
-		Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
+Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         console.log(`It's a draw. 
 		Final score: Your score: ${playerScore}. Computer's score: ${computerScore}.`);
         }
