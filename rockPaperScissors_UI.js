@@ -4,9 +4,9 @@ function computerPlay() {
     const computerSelection = options[Math.floor(Math.random() * options.length)];
     return computerSelection;
 }
-function functionName(event) {
+function buttonClickEvent (event) {
         event.preventDefault();
-		playSingleRound(event);          
+	playSingleRound(event);          
 }
 
 const resultsPara1 = document.getElementById("p1");
@@ -24,7 +24,7 @@ closeButton.onclick = () => {
     makeInvisible();
 }
 buttons.forEach((button) => {
-	button.addEventListener("click", functionName);
+	button.addEventListener("click", buttonClickEvent);
 });
 
 function makeVisible() {
